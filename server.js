@@ -16,6 +16,11 @@ app.use(express.static(path.join(__dirname, "client", "build")))
 
 app.use(bodyParser.json())
 
+//Routes
+
+app.use('/events', require('./routes/events'))
+app.use('/customer', require('./routes/customers'))
+
 //Connect to the DB
 
 mongoose.connect(process.env.MONGOD_URI || 'mongodb://localhost:27017/graphql-test', {useNewUrlParser: true, useCreateIndex: true}, () => {
